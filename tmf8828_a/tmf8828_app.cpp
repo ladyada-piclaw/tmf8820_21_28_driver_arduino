@@ -203,7 +203,8 @@ void enable ( uint32_t imageStartAddress, const unsigned char * image, int32_t i
         PRINT_CONST_STR( F( " DWNL" ) );
         PRINT_LN( );
         resetAppState();
-        setMode( );
+        // Skip setMode() here - sensor boots in legacy mode already,
+        // and the GUI will send 'o' to switch to TMF8828 8x8 if needed.
         configure();
         stateTmf8828 = TMF8828_STATE_STOPPED;
         printHelp(); // prints on UART usage and waits for user input on serial
