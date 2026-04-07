@@ -203,8 +203,7 @@ void enable ( uint32_t imageStartAddress, const unsigned char * image, int32_t i
         PRINT_CONST_STR( F( " DWNL" ) );
         PRINT_LN( );
         resetAppState();
-        // Skip setMode() here - sensor boots in legacy mode already,
-        // and the GUI will send 'o' to switch to TMF8828 8x8 if needed.
+        setMode( );
         configure();
         stateTmf8828 = TMF8828_STATE_STOPPED;
         printHelp(); // prints on UART usage and waits for user input on serial
@@ -462,6 +461,9 @@ void restoreFactoryCalibration ( )
 void setMode ( )
 {
   int8_t res;
+  PRINT_CONST_STR( F(  "DBG setMode modeIsTmf8828=" ) );
+  PRINT_INT( modeIsTmf8828 );
+  PRINT_LN( );
   if ( modeIsTmf8828 )
   {
     res = tmf8828SwitchTo8x8Mode( &(tmf8828[0]) );
@@ -661,8 +663,12 @@ int8_t serialInput ( )
     }
     else
     {
-      PRINT_CONST_STR( F(  "#Cmd," ) );
+      PRINT_CONST_STR( F(  "DBG rx=" ) );
       PRINT_CHAR( rx );
+      PRINT_CONST_STR( F(  " mode=" ) );
+      PRINT_INT( modeIsTmf8828 );
+      PRINT_CONST_STR( F(  " st=" ) );
+      PRINT_INT( stateTmf8828 );
       PRINT_LN( );
       if ( rx == 'h' )
       {
@@ -780,7 +786,7 @@ void resetAppState ( )
   clkCorrectionOn = 1;
   dumpHistogramOn = 0; // default is off
   irqTriggered = 0;
-  modeIsTmf8828 = 0;  // default is legacy (tmf882x) - let GUI toggle to tmf8828 via 'o'
+  modeIsTmf8828 = 1;  // default is tmf8828
 }
 
 // interrupt handler is called when INT pin goes low
