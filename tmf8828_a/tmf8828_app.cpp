@@ -682,9 +682,9 @@ int8_t serialInput ( )
       {  
         enable( tmf8828_image_start, tmf8828_image, tmf8828_image_length );
       }
-      else if ( rx == 'E' ) // enable
+      else if ( rx == 'E' ) // enable - also use TMF8828 image for 8x8 support
       {  
-        enable( tmf882x_image_start, tmf882x_image, tmf882x_image_length );
+        enable( tmf8828_image_start, tmf8828_image, tmf8828_image_length );
       }
       else if ( rx == 'd' )       // disable
       {  
