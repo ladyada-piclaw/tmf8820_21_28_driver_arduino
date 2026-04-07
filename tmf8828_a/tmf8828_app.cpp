@@ -659,7 +659,10 @@ int8_t serialInput ( )
       continue; // nothing to do here
     }
     else
-    { 
+    {
+      PRINT_CONST_STR( F(  "#Cmd," ) );
+      PRINT_CHAR( rx );
+      PRINT_LN( );
       if ( rx == 'h' )
       {
         printHelp(); 
@@ -776,7 +779,7 @@ void resetAppState ( )
   clkCorrectionOn = 1;
   dumpHistogramOn = 0; // default is off
   irqTriggered = 0;
-  modeIsTmf8828 = 1;  // default is tmf8828
+  modeIsTmf8828 = 0;  // default is legacy (tmf882x) - let GUI toggle to tmf8828 via 'o'
 }
 
 // interrupt handler is called when INT pin goes low
