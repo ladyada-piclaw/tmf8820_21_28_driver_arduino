@@ -623,7 +623,7 @@ void printDeviceInfo ( )
 // Function prints a help screen
 void printHelp ( )
 {
-  PRINT_CONST_STR( F(  "TMF8828 Arduino Driver" ) );
+  PRINT_CONST_STR( F(  "TMF8828 Arduino Driver (PATCHED)" ) );
   PRINT_LN( ); PRINT_CONST_STR( F(  "UART commands" ) );
   PRINT_LN( ); PRINT_CONST_STR( F(  "a ... dump registers" ) );
   PRINT_LN( ); PRINT_CONST_STR( F(  "c ... next configuration" ) );
