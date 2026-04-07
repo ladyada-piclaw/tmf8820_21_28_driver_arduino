@@ -461,7 +461,7 @@ void restoreFactoryCalibration ( )
 void setMode ( )
 {
   int8_t res;
-  PRINT_CONST_STR( F(  "DBG setMode modeIsTmf8828=" ) );
+  PRINT_CONST_STR( F(  "#Dbg,setMode=" ) );
   PRINT_INT( modeIsTmf8828 );
   PRINT_LN( );
   if ( modeIsTmf8828 )
@@ -663,11 +663,11 @@ int8_t serialInput ( )
     }
     else
     {
-      PRINT_CONST_STR( F(  "DBG rx=" ) );
+      PRINT_CONST_STR( F(  "#Dbg,rx=" ) );
       PRINT_CHAR( rx );
-      PRINT_CONST_STR( F(  " mode=" ) );
+      PRINT_CONST_STR( F(  ",mode=" ) );
       PRINT_INT( modeIsTmf8828 );
-      PRINT_CONST_STR( F(  " st=" ) );
+      PRINT_CONST_STR( F(  ",st=" ) );
       PRINT_INT( stateTmf8828 );
       PRINT_LN( );
       if ( rx == 'h' )
